@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const _ = require('lodash');
 const path = require('path');
-const metadataPath = path.join(__dirname, '../../metadata.json');
+const metadataPath = path.join(__dirname, '../metadata.json');
 var EnvVarType;
 (function(EnvVarType) {
     EnvVarType[(EnvVarType['Port'] = 0)] = 'Port';
@@ -19,15 +19,15 @@ var EnvVarType;
 })(EnvVarType || (EnvVarType = {}));
 // Whitelisted token addresses. Set to a '*' instead of an array to allow all tokens.
 exports.WHITELISTED_TOKENS = _.isEmpty(process.env.WHITELIST_ALL_TOKENS)
-    ? ['0x2002d3812f58e35f0ea1ffbf80a75a38c32175fa', '0xd0a1e359811322d97991e03f863a0c30c2cf029c']
-    : assertEnvVarType('WHILTELIST_ALL_TOKENS', process.env.WHITELIST_ALL_TOKENS, EnvVarType.WhitelistAllTokens);
+    ? ['0x9f014e76ec550c8abc3cfc0f7cf46d15d63ac343']
+    : assertEnvVarType('WHITELIST_ALL_TOKENS', process.env.WHITELIST_ALL_TOKENS, EnvVarType.WhitelistAllTokens);
 // Network port to listen on
 exports.HTTP_PORT = _.isEmpty(process.env.HTTP_PORT)
     ? 3000
     : assertEnvVarType('HTTP_PORT', process.env.HTTP_PORT, EnvVarType.Port);
 // Default network id to use when not specified
 exports.NETWORK_ID = _.isEmpty(process.env.NETWORK_ID)
-    ? 42
+    ? 3
     : assertEnvVarType('NETWORK_ID', process.env.NETWORK_ID, EnvVarType.NetworkId);
 // The fee recipient for orders
 exports.FEE_RECIPIENT = _.isEmpty(process.env.FEE_RECIPIENT)
@@ -43,7 +43,7 @@ exports.TAKER_FEE_ZRX_UNIT_AMOUNT = _.isEmpty(process.env.TAKER_FEE_ZRX_UNIT_AMO
     : assertEnvVarType('TAKER_FEE_ZRX_UNIT_AMOUNT', process.env.TAKER_FEE_ZRX_UNIT_AMOUNT, EnvVarType.UnitAmount);
 // Ethereum RPC url
 exports.RPC_URL = _.isEmpty(process.env.RPC_URL)
-    ? 'https://kovan.infura.io/v3/e2c067d9717e492091d1f1d7a2ec55aa'
+    ? 'https://ropsten.infura.io/v3/22c106e086db4cb28d01d5ea520e72db'
     : assertEnvVarType('RPC_URL', process.env.RPC_URL, EnvVarType.Url);
 // Address used when simulating transfers from the maker to the simulation address
 exports.DEFAULT_TAKER_SIMULATION_ADDRESS = '0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
